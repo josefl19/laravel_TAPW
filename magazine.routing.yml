@@ -1,0 +1,59 @@
+magazineList2:
+  path: /magazine/list2
+  defaults:
+      _controller: Drupal\magazine\Controller\MagazineController::lista2
+  requirements:
+      _permission: 'magazine read'
+      #_user_is_logged_in: 'FALSE'
+
+magazineList:
+  path: /magazine/list
+  defaults:
+      _controller: Drupal\magazine\Controller\MagazineController::lista
+  requirements:
+      _permission: 'magazine read'
+      #_user_is_logged_in: 'FALSE'
+
+
+
+magazineAdd:
+  path: /magazine/add
+  defaults:
+    _form: '\Drupal\magazine\Form\MagazineAddForm'
+    _title: 'Crear articulo'
+  requirements:
+    _permission: 'magazine add'
+
+magazineAdd2:
+  path: /magazine/add2
+  defaults:
+    _controller: Drupal\magazine\Controller\MagazineController::add
+    _title: 'Crear articulo'
+  requirements:
+    _permission: 'magazine add'
+
+#faqSave:
+#  path: /faq/save
+#  defaults:
+#    _controller: Drupal\faq\Controller\FaqController::save
+#  requirements:
+#    _permission: 'faq add'
+
+magazine.magazineDelete:
+  path: '/magazine/delete/{id}'
+  defaults:
+    _form: 'Drupal\magazine\Form\magazineDeleteForm'
+    _title: 'Eliminar articulo'
+  requirements: 
+    _permission: 'magazine delete'
+
+magazine.magazineUpdate:
+  path: '/magazine/update/{id}'
+  defaults:
+    _form: 'Drupal\magazine\Form\MagazineUpdateForm'
+    _title: 'Modificar articulo'
+  requirements:
+    _permission: 'magazine update'
+
+
+

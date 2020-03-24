@@ -1,0 +1,22 @@
+<?php
+function magazine_theme($existing, $type, $theme, $path) {
+  $path = drupal_get_path('module', 'magazine');
+  return array(
+    'magazine_list' => array(
+      'variables' => array('tabla_lista' => NULL, 'new_magazine'=>NULL),
+      'path'=> $path . '/theme',
+    ),   
+     'magazine_list2' => array(
+      'variables' => array('tabla_lista' => NULL, 'new_magazine'=>NULL),
+      'path'=> $path . '/theme',
+    ),    
+    'magazine-add' => array(
+      'variables' => array('algomas' => NULL),
+      'path'=> $path . '/theme',
+    ),
+    'tramite' => array(
+      'variables' => array('nombre' => NULL, 'descripcion'=>NULL, 'estatus'=> NULL),
+      'path'=> $path . '/theme',
+    ),
+  );
+}

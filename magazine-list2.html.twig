@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+ 
+<html lang="es">
+ 
+<head>
+<title>Articulos</title>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+ 
+<body>
+    <header>
+     
+    </header>
+    <section>
+       <article>
+           {{ new_magazine }}
+       </article>
+    </section>
+    <aside>
+       <div class="container">
+    <div class="panel-group col-md-9" id="magazinceAccordion">
+    {% for row in tabla_lista %}
+        <div class="panel panel-default">
+            <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#magazineAccordion" data-target="#nombre{{ loop.index }}">
+                 <h4 class="panel-title">
+                    <a href="#" class="ing" style="-background:003030;">Articulo: {{ row.title }}</a>
+                </h4>
+            </div>
+            <div id="nombre{{ loop.index }}" class="panel-collapse collapse" style="height: 0px;">
+                <div class="panel-body">
+                    <h5><span class="label label-primary">Descripcion</span></h5>
+                    <p>{{row.resume}}</p>
+                </div>
+                <div class="panel-body">
+                    <h5><span class="label label-primary">Autor</span></h5>
+                    <p>{{row.autor}}</p>
+                </div>   
+                {% if User.hasPermission('magazine add') %}                                        
+                <div class="panel-body">                    
+                    <a href="{{ path('magazine.magazineUpdate', {'id': row.id}) }}" class="btn btn-warning">Actualizar</a>
+                    <a href="{{ path('magazine.magazineDelete', {'id': row.id}) }}" class="btn btn-danger">Eliminar</a>
+                </div> 
+                 {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <!--/panel-group-->
+</div>
+           
+    </aside>
+    
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,22 @@
+<?php
+function conferences_theme($existing, $type, $theme, $path) {
+  $path = drupal_get_path('module', 'conferences');
+  return array(
+    'conferences_list' => array(
+      'variables' => array('tabla_lista' => NULL, 'new_conferences'=>NULL),
+      'path'=> $path . '/theme',
+    ),   
+     'conferences_list2' => array(
+      'variables' => array('tabla_lista' => NULL, 'new_conferences'=>NULL),
+      'path'=> $path . '/theme',
+    ),    
+    'conferences-add' => array(
+      'variables' => array('algomas' => NULL),
+      'path'=> $path . '/theme',
+    ),
+    'tramite' => array(
+      'variables' => array('nombre' => NULL, 'descripcion'=>NULL, 'estatus'=> NULL),
+      'path'=> $path . '/theme',
+    ),
+  );
+}
