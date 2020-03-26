@@ -9,7 +9,7 @@
   <a href="{{ route('admin.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> New</a>
   <br><br>
 </div>
-<table class="table table-bordered bg-success">
+<table id="blog-table" class="table table-bordered bg-success">
     <thead>
       <tr>
         <th scope="col">id</th>

@@ -11,9 +11,11 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('css/business-casual.css')}}" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cb523017c4.js" crossorigin="anonymous"></script>
     <!-- Add custom CSS here -->
-    <link href="{{asset('css/business-casual.css')}}" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -71,6 +73,8 @@
     <!-- JavaScript -->
     <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
     <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="{{asset('js/bussinesscasual.js')}}"></script>
     <script>
     // Activates the Carousel
     $('.carousel').carousel({
