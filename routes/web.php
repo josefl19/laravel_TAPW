@@ -42,3 +42,18 @@ Route::get('/admin/show/{id}', 'BlogController@show')->name('admin.view');
 Route::get('/admin/delete/{id}', 'BlogController@destroy')->name('admin.destroy');
 
 
+
+Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    return view('business_casual');
+})->name('home');
+//Auth::routes();
+
+Route::get('/unauth', function () {
+    return view('unauth');
+});
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

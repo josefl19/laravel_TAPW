@@ -1,6 +1,23 @@
-@extends('main') <!-- Indica la herencia, en este caso home hereda de main-->
+@extends('layouts.app')
 
-@section('content') <!-- seccion 'content' definida en la seccion main -->
-  <h1>Home</h1>
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam architecto consequuntur quidem aperiam, ipsa at recusandae aliquid possimus suscipit fugit qui ut molestias? Laborum explicabo voluptas repellat numquam incidunt adipisci. 
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    You are logged in!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
