@@ -12,7 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/business-casual.css')}}" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cb523017c4.js" crossorigin="anonymous"></script>
     <!-- Add custom CSS here -->
     
