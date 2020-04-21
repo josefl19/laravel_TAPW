@@ -28,6 +28,29 @@ class BlogController extends Controller
         return view('business-casual/adminBlog',['posts'=>$posts]);
     }
 
+    public function getJSON()
+    {
+        $posts_json = Blog::all();
+        $posts = array();
+        foreach($posts_json as $key => $row) {
+            //$modal='<a href="\'#myModal{{'.$row['id'].'}}\'" data-toggle="modal" data-target="#myModal{{'.$row['id'].'}}"><i class="fas fa-eye fa-2x"></i></a>';
+            //$edit='<a href="\' {{ route(admin.edit, '.$row['id'].') }}"\'><i class="far fa-edit fa-2x"></i></a>';
+            //$destroy='<a href="{{ route(\'admin.destroy\', '.$row['id'].') }}"><i class="fa fa-trash fa-2x"></i></a>';
+            array_push($posts, [
+                $row['id'], 
+                $row['title'], 
+                $row['description'], 
+                $row['created_date'], 
+                $row['image'], 
+                $row['author'],
+                '<i id="'.$row->id.'" class="view_post btn fa fa-eye fa-2x"></i>',
+                '<i id="'.$row->id.'" class="edit_post btn fa fa-edit fa-2x"></i>',
+                '<i id="'.$row->id.'" class="del_post btn fa fa-trash fa-2x"></i>',
+            ]);
+        }
+        return json_encode(["data"=>$posts]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,13 +71,13 @@ class BlogController extends Controller
     {
         $blog = new Blog();
         $blog->title = $request->get('title');
-        $blog->description = $request->get('content');
+        $blog->description = $request->get('description');
         $blog->author = $request->get('author');
         $blog->image = $request->get('image');
         $blog->created_date = date('Y-m-d');
         $blog->save();
-        return redirect('/admin/blog')->with('success', 'Registro guardado correctamente');
 
+        return response()->json(['success' => 'Data created']);
     }
 
     /**
@@ -65,7 +88,10 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $res=Blog::find($id);
+        $res->imageName = $res->image;
+        $res->image=asset("img/".$res->image);
+        return json_encode($res);
     }
 
     /**
@@ -76,8 +102,11 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $row = Blog::find($id);
-        return view('business-casual/blog_update',compact('row'));
+        //$row = Blog::find($id);
+        //return view('business-casual/blog_update',compact('row'));
+
+        $res=Blog::find($id);
+        return json_encode($res);
     }
 
     /**
@@ -89,14 +118,32 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $blog = Blog::find($id);
-        $blog->title = $request->get('title');
-        $blog->description = $request->get('content');
-        $blog->author = $request->get('author');
-        $blog->image = $request->get('image');
-        $blog->created_date = date('Y-m-d');
-        $blog->save();
-        return redirect('/admin/blog')->with('success', 'Registro actualizado correctamente');
+        //$blog = Blog::find($id);
+        //$blog->title = $request->get('title');
+        //$blog->description = $request->get('content');
+        //$blog->author = $request->get('author');
+        //$blog->image = $request->get('image');
+        //$blog->created_date = date('Y-m-d');
+        //$blog->save();
+        //return redirect('/admin/blog')->with('success', 'Registro actualizado correctamente');
+
+        Blog::updateOrCreate(['id' => $request->id],
+                             ['title' => $request->title, 
+                              'description' => $request->description,
+                              'author' => $request->author,
+                              'image' => $request->image]); 
+                              
+        /*$form_data = array(
+            'title' => $request->titleEdit, 
+            'description' => $request->descriptionEdit,
+            'author' => $request->authorEdit,
+            'image' => $request->imageEdit
+        );
+        Blog::whereId($request->id)->update($form_data);*/
+
+        return response()->json(['success' => 'Data is successfully updated']);
+
+        //return response()->json(['success'=>'Product saved successfully.']);
     }
 
     /**

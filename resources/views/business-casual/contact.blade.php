@@ -32,29 +32,30 @@
             </h2>
             <hr>
             <p>This contact form is just the form elements, it is not a working form. You will have to make the form work by yourself, or take it out if you can't figure out how to make it work.</p>
-            <form role="form">
+            <form role="form" id="contactForm" name="contactForm" method="POST" action="{{url('sendemail/send')}}">
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <label>Name</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" name="name" id="name">
                     </div>
                     <div class="form-group col-lg-4">
                         <label>Email Address</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" name="email" id="email">
                     </div>
                     <div class="form-group col-lg-4">
                         <label>Phone Number</label>
-                        <input type="tel" class="form-control">
+                        <input type="tel" class="form-control" name="phone" id="phone">
                     </div>
                     <div class="clearfix"></div>
                     <div class="form-group col-lg-12">
                         <label>Message</label>
-                        <textarea class="form-control" rows="6"></textarea>
+                        <textarea class="form-control" rows="6" name="message" id="message"></textarea>
                     </div>
                     <div class="form-group col-lg-12">
                         <input type="hidden" name="save" value="contact">
                         <button type="submit" class="btn btn-default">Submit</button>
                     </div>
+                    <span id="form_result"></span>
                 </div>
             </form>
         </div>

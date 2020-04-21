@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Business Casual Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
@@ -56,7 +56,21 @@
                         </li>
                     @endif
                 @else
-                    <li><a href="{{route('admin.blog')}}">Admin</a></li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Admin <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('admin.blog')}}">
+                                {{ __('Admin Blog') }}
+                            </a>
+                            <a class="dropdown-item" href="{{route('admin.about')}}">
+                                {{ __('Admin Team') }}
+                            </a>
+                        </div>
+                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>

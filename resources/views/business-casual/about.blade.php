@@ -28,24 +28,14 @@
             </h2>
             <hr>
         </div>
-        <div class="col-sm-4 text-center">
-            <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-            <h3>John Smith
-                <small>Job Title</small>
-            </h3>
-        </div>
-        <div class="col-sm-4 text-center">
-            <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-            <h3>John Smith
-                <small>Job Title</small>
-            </h3>
-        </div>
-        <div class="col-sm-4 text-center">
-            <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-            <h3>John Smith
-                <small>Job Title</small>
-            </h3>
-        </div>
+            @foreach($team as $t)
+                <div class="col-sm-4 text-center">
+                    <img class="img-responsive" src="img/{{$t->image}}" alt="">
+                    <h3>{{$t->name}}
+                        <small>{{$t->puesto}}</small>
+                    </h3>
+                </div>
+            @endforeach
         <div class="clearfix"></div>
     </div>
 </div>
